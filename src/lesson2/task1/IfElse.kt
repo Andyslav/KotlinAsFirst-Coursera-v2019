@@ -76,7 +76,21 @@ fun timeForHalfWay(
     t1: Double, v1: Double,
     t2: Double, v2: Double,
     t3: Double, v3: Double
-): Double = TODO()
+): Double {
+    val timeTravel: Double
+    val l1 = t1 * v1
+    val l2 = t2 * v2
+    val l3 = t3 * v3
+    val halfLen = (l1 + l2 + l3) / 2
+    if (l1 >= halfLen) {
+        timeTravel = halfLen / v1
+    } else if ((l1 + l2) >= halfLen) {
+        timeTravel = t1 + (halfLen - l1) / v2
+    } else {
+        timeTravel = t1 + t2 + (halfLen - l1 - l2) / v3
+    }
+    return timeTravel
+}
 
 /**
  * Простая
@@ -117,7 +131,29 @@ fun rookOrBishopThreatens(
  * прямоугольным (вернуть 1) или тупоугольным (вернуть 2).
  * Если такой треугольник не существует, вернуть -1.
  */
-fun triangleKind(a: Double, b: Double, c: Double): Int = TODO()
+fun triangleKind(a: Double, b: Double, c: Double): Int {
+    var a1 = a
+    var b1 = b
+    var c1 = c
+    var x = 0
+
+
+    if ((a < b) && (b > c)) {
+        a1 = b
+        b1 = a
+    }
+    if ((c > b) && (a < c)) {
+        a1 = c
+        c1 = a
+    }
+
+    if (a1 > (b1 + c1)) x = -1
+    else if (a1 * a1 == b1 * b1 + c1 * c1) x = 1
+    else if (a1 * a1 < b1 * b1 + c1 * c1) x = 0
+    else if (a1 * a1 > b1 * b1 + c1 * c1) x = 2
+    return x
+
+}
 
 /**
  * Средняя
@@ -127,4 +163,18 @@ fun triangleKind(a: Double, b: Double, c: Double): Int = TODO()
  * Найти длину пересечения отрезков AB и CD.
  * Если пересечения нет, вернуть -1.
  */
-fun segmentLength(a: Int, b: Int, c: Int, d: Int): Int = TODO()
+fun segmentLength(a: Int, b: Int, c: Int, d: Int): Int {
+    var num = 0
+    if ((a !in c..d) && ((b !in c..d)) || ((c !in a..b) && ((d !in a..b)))) {
+        num = -1
+
+    }
+    if ((a in c..d) && ((b !in c..d))) num = d - a
+    else if ((a !in c..d) && ((b in c..d))) num = b - c
+    else if ((c in a..b) && ((d !in a..b))) num = b - c
+    else if ((c !in a..b) && ((d in a..b))) num = d - a
+    else if ((a in c..d) && ((b in c..d))) num = b - a
+    else if ((c in a..b) && ((d in a..b))) num = d - c
+    return num
+
+}

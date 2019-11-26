@@ -42,9 +42,9 @@ fun daysInMonth(month: Int, year: Int): Int = TODO()
  * Средняя
  *
  * Проверить, лежит ли окружность с центром в (x1, y1) и радиусом r1 целиком внутри
- * окружности с центром в (x2, y2) и радиусом r2.
- * Вернуть true, если утверждение верно
- */
+* окружности с центром в (x2, y2) и радиусом r2.
+* Вернуть true, если утверждение верно
+*/
 fun circleInside(
     x1: Double, y1: Double, r1: Double,
     x2: Double, y2: Double, r2: Double
@@ -59,4 +59,45 @@ fun circleInside(
  * кирпич 4 х 4 х 4 пройдёт через отверстие 4 х 4.
  * Вернуть true, если кирпич пройдёт
  */
-fun brickPasses(a: Int, b: Int, c: Int, r: Int, s: Int): Boolean = TODO()
+fun brickPasses(a: Int, b: Int, c: Int, r: Int, s: Int): Boolean {
+    var min1: Int = 0
+    var min2: Int = 0
+    var min3: Int = 0
+
+    if ((a >= b) && (b >= c)) {
+        min1 = a
+        min2 = b
+        min3 = c
+    }
+    if ((a >= c) && (c >= b)) {
+        min1 = a
+        min2 = c
+        min3 = b
+    }
+    if ((b >= c) && (c >= a)) {
+        min1 = b
+        min2 = c
+        min3 = a
+    }
+    if ((b >= a) && (a >= c)) {
+        min1 = b
+        min2 = a
+        min3 = c
+    }
+    if ((c >= a) && (a >= b)) {
+        min1 = c
+        min2 = a
+        min3 = b
+    }
+    if ((c >= b) && (b >= a)) {
+        min1 = c
+        min2 = b
+        min3 = a
+    }
+    println("$a  $b  $c")
+    println("$min1 $min2 $min3 $r $s")
+    return if (((min1 >= r) && (min2 >= s)) || ((min2 >= r) && (min1 >= s))) true
+    else false
+
+    }
+
