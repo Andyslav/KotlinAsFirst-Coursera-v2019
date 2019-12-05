@@ -2,6 +2,8 @@
 
 package lesson3.task1
 
+import kotlin.math.PI
+import kotlin.math.abs
 import kotlin.math.sqrt
 
 /**
@@ -113,14 +115,31 @@ fun lcm(m: Int, n: Int): Int = TODO()
  *
  * Для заданного числа n > 1 найти минимальный делитель, превышающий 1
  */
-fun minDivisor(n: Int): Int = TODO()
+fun minDivisor(n: Int): Int {
+    var result = 1
+    for (i in 2..n) {
+        if (n % i == 0) {
+            result = i
+            break
+        }
+    }
+    return result
+}
 
 /**
  * Простая
  *
  * Для заданного числа n > 1 найти максимальный делитель, меньший n
  */
-fun maxDivisor(n: Int): Int = TODO()
+fun maxDivisor(n: Int): Int {
+    var result = 1
+    for (i in 1..n - 1) {
+        if (n % i == 0) {
+            result = i
+        }
+    }
+    return result
+}
 
 /**
  * Простая
@@ -129,7 +148,28 @@ fun maxDivisor(n: Int): Int = TODO()
  * Взаимно простые числа не имеют общих делителей, кроме 1.
  * Например, 25 и 49 взаимно простые, а 6 и 8 -- нет.
  */
-fun isCoPrime(m: Int, n: Int): Boolean = TODO()
+fun isCoPrime(m: Int, n: Int): Boolean {
+
+    var max = m
+    var min = n
+    var result = true
+    if (m < n) {
+        max = min
+        min = m
+    }
+    println("min=$min   max=$max")
+    for (i in 2 until min) {
+        println("i=$i")
+        if ((n % i == 0) && (m % i == 0)) {
+            result = false
+            break
+        }
+
+    }
+    return result
+}
+
+
 
 /**
  * Простая
@@ -167,7 +207,37 @@ fun collatzSteps(x: Int): Int = TODO()
  * Подумайте, как добиться более быстрой сходимости ряда при больших значениях x.
  * Использовать kotlin.math.sin и другие стандартные реализации функции синуса в этой задаче запрещается.
  */
-fun sin(x: Double, eps: Double): Double = TODO()
+fun sin(x: Double, eps: Double): Double {
+    var fact = 1.0
+    var res = x
+    var respre = x
+    var i = 1.0
+    var xStep = x
+    var delta = 10.0
+    var newX = x
+    var k = 1
+    if (x >= 2 * PI) {
+
+        k = (x / (2 * PI)).toInt()
+        newX = x - k * 2 * PI
+        xStep = newX
+        res = newX
+        respre = newX
+        println("HELLO ${k}")
+    }
+
+    while (abs(delta) > 1e-5) {
+        respre = res
+        i += 2.0
+        fact *= i * (i - 1)
+        xStep *= (0 - newX) * newX
+        res += xStep / fact
+        delta =abs(res - respre)
+        println("X = $newX   i = $i sin = $res   fact = $fact  delta = $delta")
+
+    }
+    return res
+}
 
 /**
  * Средняя
@@ -187,7 +257,9 @@ fun cos(x: Double, eps: Double): Double = TODO()
  *
  * Использовать операции со строками в этой задаче запрещается.
  */
-fun revert(n: Int): Int = TODO()
+fun revert(n: Int): Int{
+    while ( > 1e-5) {
+}
 
 /**
  * Средняя
