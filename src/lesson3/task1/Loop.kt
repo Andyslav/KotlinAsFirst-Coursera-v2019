@@ -108,7 +108,16 @@ fun fib(n: Int): Int =
  * Для заданных чисел m и n найти наименьшее общее кратное, то есть,
  * минимальное число k, которое делится и на m и на n без остатка
  */
-fun lcm(m: Int, n: Int): Int = TODO()
+fun lcm(m: Int, n: Int): Int {
+    var result = m
+    for (i in m..n * m) {
+        if ((i % m == 0) && (i % n == 0)) {
+            result = i
+            break
+        }
+    }
+    return result
+}
 
 /**
  * Простая
@@ -168,7 +177,6 @@ fun isCoPrime(m: Int, n: Int): Boolean {
     }
     return result
 }
-
 
 
 /**
@@ -232,7 +240,7 @@ fun sin(x: Double, eps: Double): Double {
         fact *= i * (i - 1)
         xStep *= (0 - newX) * newX
         res += xStep / fact
-        delta =abs(res - respre)
+        delta = abs(res - respre)
         println("X = $newX   i = $i sin = $res   fact = $fact  delta = $delta")
 
     }
@@ -257,9 +265,8 @@ fun cos(x: Double, eps: Double): Double = TODO()
  *
  * Использовать операции со строками в этой задаче запрещается.
  */
-fun revert(n: Int): Int{
-    while ( > 1e-5) {
-}
+fun revert(n: Int): Int = TODO()
+
 
 /**
  * Средняя
@@ -280,7 +287,23 @@ fun isPalindrome(n: Int): Boolean = TODO()
  *
  * Использовать операции со строками в этой задаче запрещается.
  */
-fun hasDifferentDigits(n: Int): Boolean = TODO()
+fun hasDifferentDigits(n: Int): Boolean {
+    var k = n % 10
+    var result = true
+    var newn = (n / 10).toInt()
+    println("$n")
+    if (n > 10) {
+        while (newn > 10) {
+            if (k == ((newn % 10).toInt())) {
+                result = false
+                break
+            }
+            k = newn % 10
+            newn = (newn / 10).toInt()
+        }
+    } else result = false
+    return result
+}
 
 /**
  * Сложная
