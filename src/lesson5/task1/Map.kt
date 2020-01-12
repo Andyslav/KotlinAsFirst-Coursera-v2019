@@ -91,7 +91,23 @@ fun buildWordSet(text: List<String>): MutableSet<String> {
  *   buildGrades(mapOf("Марат" to 3, "Семён" to 5, "Михаил" to 5))
  *     -> mapOf(5 to listOf("Семён", "Михаил"), 3 to listOf("Марат"))
  */
-fun buildGrades(grades: Map<String, Int>): Map<Int, List<String>> = TODO()
+fun buildGrades(grades: Map<String, Int>): Map<Int, MutableList<String>> {
+ /*   var grade2 = mutableListOf<String>()
+    var grade3 = mutableListOf<String>()
+    var grade4 = mutableListOf<String>()
+    var grade5 = mutableListOf<String>()
+    if
+    for ((name, grade) in grades) {
+        if (grade == 2) grade2.add(name)
+        if (grade == 3) grade3.add(name)
+        if (grade == 4) grade4.add(name)
+        if (grade == 5) grade5.add(name)
+    }
+    return mapOf(5 to grade5, 4 to grade4, 3 to grade3, 2 to grade2)
+    */
+  */
+}
+
 
 /**
  * Простая
@@ -103,7 +119,19 @@ fun buildGrades(grades: Map<String, Int>): Map<Int, List<String>> = TODO()
  *   containsIn(mapOf("a" to "z"), mapOf("a" to "z", "b" to "sweet")) -> true
  *   containsIn(mapOf("a" to "z"), mapOf("a" to "zee", "b" to "sweet")) -> false
  */
-fun containsIn(a: Map<String, String>, b: Map<String, String>): Boolean = TODO()
+fun containsIn(a: Map<String, String>, b: Map<String, String>): Boolean {
+    var res = true
+    for ((name, grade) in b) {
+        if (a.getValue(name) == null) {
+            res = false
+            break
+        } else if (a.getValue(name) != grade) {
+            res = false
+            break
+        }
+    }
+        return res
+    }
 
 /**
  * Простая
@@ -119,7 +147,10 @@ fun containsIn(a: Map<String, String>, b: Map<String, String>): Boolean = TODO()
  *   subtractOf(a = mutableMapOf("a" to "z"), mapOf("a" to "z"))
  *     -> a changes to mutableMapOf() aka becomes empty
  */
-fun subtractOf(a: MutableMap<String, String>, b: Map<String, String>): Unit = TODO()
+fun subtractOf(a: MutableMap<String, String>, b: Map<String, String>): Unit {
+
+
+}
 
 /**
  * Простая

@@ -198,7 +198,12 @@ fun polynom(p: List<Int>, x: Int): Int {
  *
  * Обратите внимание, что данная функция должна изменять содержание списка list, а не его копии.
  */
-fun accumulate(list: MutableList<Int>): MutableList<Int> = TODO()
+fun accumulate(list: MutableList<Int>) : MutableList<Int> {
+    for (i in 1 until list.size) {
+        list[i] += list[i - 1]
+    }
+    return list
+}
 
 /**
  * Средняя
@@ -216,8 +221,23 @@ fun factorize(n: Int): List<Int> = TODO()
  * Результат разложения вернуть в виде строки, например 75 -> 3*5*5
  * Множители в результирующей строке должны располагаться по возрастанию.
  */
-fun factorizeToString(n: Int): String = TODO()
-
+fun factorizeToString(n: Int): String {
+    var s = ""
+    var N = n
+    while (N == 1) {
+        for (i in 1 until N) {
+            if (N % i == 0){
+                N /= i
+                s += N.toString()
+                break
+            }
+        }
+        if (N != 1) s = "$*"
+    }
+    println(n)
+    println(s)
+    return s
+}
 /**
  * Средняя
  *
@@ -282,3 +302,4 @@ fun roman(n: Int): String = TODO()
  */
 
 fun russian(n: Int): String = TODO()
+
